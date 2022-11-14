@@ -1,4 +1,4 @@
-{% from 'custom/macros.html' import tabs_open, tabs_close, tab_header, tab_footer, checkbox_onoff, checkbox %}
+``{% from 'custom/macros.html' import tabs_open, tabs_close, tab_header, tab_footer, checkbox_onoff, checkbox %}
 {% from 'custom/icons.html' import icon_big %}
 
 {% extends "custom/page_with_header.html" %}
@@ -203,11 +203,11 @@
       <div class="description">{{ _('Change SearXNG layout') }}</div>
     </fieldset>
     <fieldset>
-      <legend id="pref_custom_style">{{ _('Theme style') }}</legend>
+      <legend id="pref_simple_style">{{ _('Theme style') }}</legend>
       <p class="value">
-        <select name="custom_style" aria-labelledby="pref_custom_style">
+        <select name="simple_style" aria-labelledby="pref_simple_style">
           {%- for name in ['auto', 'light', 'dark'] -%}
-          <option value="{{ name }}" {% if name == preferences.get_value('custom_style') %}selected="selected"{% endif %}>{{ _(name) }}</option>
+          <option value="{{ name }}" {% if name == preferences.get_value('simple_style') %}selected="selected"{% endif %}>{{ _(name) }}</option>
           {%- endfor -%}
         </select>
       </p>
