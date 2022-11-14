@@ -552,7 +552,10 @@ node.env() {
     (   set -e
 
         build_msg INSTALL "searx/static/themes/simple/package.json"
-        npm --prefix searx/static/themes/simple install
+        npm --prefix searx/static/themes/custom install
+        build_msg INSTALL "searx/static/themes/custom/package.json"
+        npm --prefix searx/static/themes/custom install
+
     )
     dump_return $?
 }
@@ -758,6 +761,7 @@ themes.all() {
         pygments.less
         node.env
         themes.simple
+        themes.custom
     )
     dump_return $?
 }
@@ -766,6 +770,9 @@ themes.live() {
     local LIVE_THEME="${LIVE_THEME:-${1}}"
     case "${LIVE_THEME}" in
         simple)
+            theme="searx/static/themes/${LIVE_THEME}"
+            ;;
+        custom)
             theme="searx/static/themes/${LIVE_THEME}"
             ;;
         '')
@@ -799,6 +806,22 @@ themes.simple.test() {
     nodejs.ensure
     npm --prefix searx/static/themes/simple install
     npm --prefix searx/static/themes/simple run test
+    dump_return $?
+}
+
+themes.custom() {
+    (   set -e
+        build_msg GRUNT "theme: custom"
+        npm --prefix searx/static/themes/simple run build
+    )
+    dump_return $?
+}
+
+themes.custom.test() {
+    build_msg TEST "theme: custom"
+    nodejs.ensure
+    npm --prefix searx/static/themes/custom install
+    npm --prefix searx/static/themes/custom run test
     dump_return $?
 }
 
