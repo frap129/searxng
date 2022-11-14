@@ -12,6 +12,9 @@ themes.:
   simple.:
     build   : build simple theme
     test    : test simple theme
+  custom.:
+    build   : build custom theme
+    test    : test custom theme
 EOF
 }
 
@@ -20,6 +23,7 @@ themes.all() {
         pygments.less
         node.env
         themes.simple
+        themes.custom
     )
     dump_return $?
 }
@@ -34,7 +38,7 @@ themes.live() {
             die_caller 42 "missing theme argument"
             ;;
         *)
-            die_caller 42 "unknown theme '${LIVE_THEME}' // [simple]'"
+            die_caller 42 "unknown theme '${LIVE_THEME}' // [simple, custom]'"
             ;;
     esac
     build_msg GRUNT "theme: $1 (live build)"
@@ -61,5 +65,21 @@ themes.simple.test() {
     nodejs.ensure
     npm --prefix searx/static/themes/simple install
     npm --prefix searx/static/themes/simple run test
+    dump_return $?
+}
+
+themes.custom() {
+    (   set -e
+        build_msg GRUNT "theme: custom"
+        npm --prefix searx/static/themes/custom run build
+    )
+    dump_return $?
+}
+
+themes.simple.test() {
+    build_msg TEST "theme: cystom"
+    nodejs.ensure
+    npm --prefix searx/static/themes/custom install
+    npm --prefix searx/static/themes/custom run test
     dump_return $?
 }

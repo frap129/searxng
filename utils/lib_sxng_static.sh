@@ -10,6 +10,12 @@ STATIC_BUILT_PATHS=(
     'searx/static/themes/simple/img'
     'searx/templates/simple/searxng-wordmark.min.svg'
     'searx/templates/simple/icons.html'
+    'searx/static/themes/custom/css'
+    'searx/static/themes/custom/js'
+    'searx/static/themes/custom/src/generated/pygments.less'
+    'searx/static/themes/custom/img'
+    'searx/templates/custom/searxng-wordmark.min.svg'
+    'searx/templates/custom/icons.html'
 )
 
 static.help(){

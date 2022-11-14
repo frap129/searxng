@@ -23,7 +23,9 @@ node.env() {
     nodejs.ensure
     (   set -e
         build_msg INSTALL "./searx/static/themes/simple/package.json"
+        build_msg INSTALL "./searx/static/custom/simple/package.json"
         npm --prefix searx/static/themes/simple install
+        npm --prefix searx/static/themes/custom install
     )
     dump_return $?
 }
