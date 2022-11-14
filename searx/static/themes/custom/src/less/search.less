@@ -59,11 +59,16 @@
 
 #search_logo {
   grid-area: logo;
-  display: inline-flex;
+  display: block;
   margin-top: 0.5rem;
   background: url('../img/searxng.png') no-repeat;
   background-size: contain;
   width: 6rem;
+}
+
+#search_bar_results {
+  padding-left: 2rem;
+  width: @search-width - 3rem;
 }
 
 .search_categories {
@@ -96,7 +101,6 @@
   display: inline-flex;
   flex-direction: row;
   white-space: nowrap;
-  padding-left: 3rem;
 }
 
 .search_box:hover,
