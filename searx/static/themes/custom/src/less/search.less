@@ -17,7 +17,7 @@
   display: grid;
   column-gap: 1.2rem;
   row-gap: 1rem;
-  grid-template-columns: 3rem 1fr;
+  grid-template-columns: 6rem 1fr;
   grid-template-areas:
     "logo search"
     "spacer categories";
@@ -59,16 +59,10 @@
 
 #search_logo {
   grid-area: logo;
-  display: block;
+  display: flex;
   margin-top: 0.5rem;
   background: url('../img/searxng.png') no-repeat;
   background-size: contain;
-  width: 6rem;
-}
-
-#search_bar_results {
-  padding-left: 2rem;
-  width: @search-width - 3rem;
 }
 
 .search_categories {
@@ -114,8 +108,6 @@
   box-sizing: border-box;
   width: 1.8rem;
   margin: 0;
-  padding-right: 1rem;
-  padding-left: 1rem;
   background: none repeat scroll 0 0 var(--color-search-background);
   border: none;
   outline: none;
